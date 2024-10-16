@@ -1,0 +1,32 @@
+<form #taskForm="ngForm" (ngSubmit)="saveTask(taskForm)">
+    <div mat-dialog-title>
+        <h1>Add Task</h1>
+    </div>
+    <div mat-dialog-content>
+        <div class="column">
+            <mat-form-field appearance="fill">
+                <mat-label>Provide the task title</mat-label>
+                <input matInput placeholder="Add Title of the Task" name="title" ngModel required>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>add the suitable title</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Provide Description</mat-label>
+                <input matInput placeholder="Add Description of the Task" name="description" ngModel required>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>describe the task in few lines</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" name="date" ngModel required placeholder="MM/DD/YYYY">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button (click)="closeAddTask()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+</form>

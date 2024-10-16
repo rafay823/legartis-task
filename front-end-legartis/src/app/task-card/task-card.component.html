@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-title>{{ task.title }}</mat-card-title>
+    <mat-card-content>
+      <p><strong>Description:</strong> {{ task.description }}</p>
+      <p><strong>Deadline Date:</strong> {{ task.deadline_date | date: 'MM/dd/yyyy' }}</p>
+      <mat-checkbox [(ngModel)]="task.task_status" (change)="onTaskStatusChange(task)">
+        Task Completed
+      </mat-checkbox>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,29 @@
+<div class="fixed-toolbar">
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="toolbar-title">Task Board</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button (click)="openAddTaskDialogForm()">
+      Add Task
+    </button>
+  </mat-toolbar>
+</div>
+
+<div class="fixed-search-bar">
+  <mat-form-field appearance="fill">
+    <mat-label>Search Tasks</mat-label>
+    <input matInput [(ngModel)]="searchTerm" placeholder="Search by Title or Description">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+
+<div class="card-list">
+  <div *ngFor="let task of filteredTasks()">
+    <app-task-card 
+      [task]="task" 
+      [onTaskStatusChange]="onTaskStatusChange.bind(this)">
+    </app-task-card>
+  </div>
+</div>

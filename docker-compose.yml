@@ -22,7 +22,7 @@ services:
       context: ./front-end-legartis
     container_name: frontend
     ports:
-      - "4200:80"
+      - "4200:4200"
   
   # PostgreSQL
   postgres:

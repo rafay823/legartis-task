@@ -1,0 +1,41 @@
+
+services:
+  # Backend (Python)
+  backend:
+    build: 
+      context: ./legartis-backend-task
+    container_name: backend
+    ports:
+      - "8000:8000"
+    environment:
+      DB_USERNAME: myuser
+      DB_PASSWORD: mypassword
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: mydb
+    depends_on:
+      - postgres
+
+  # Frontend (Angular)
+  frontend:
+    build: 
+      context: ./front-end-legartis
+    container_name: frontend
+    ports:
+      - "4200:80"
+  
+  # PostgreSQL
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
